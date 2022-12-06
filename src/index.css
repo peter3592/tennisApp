@@ -1,0 +1,61 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+  font-family: 'Roboto', sans-serif;
+
+  -webkit-user-drag: none;
+  
+  -webkit-user-select:none;   
+  user-select: none;
+
+  /* -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent; */
+  -webkit-touch-callout:none;                /* prevent callout to copy image, etc when tap to hold */
+  -webkit-text-size-adjust:none;             /* prevent webkit from resizing text to fit */
+  -webkit-tap-highlight-color:rgba(0,0,0,0); /* prevent tap highlight color / shadow */
+}
+
+html {
+  font-size: 62.5%;
+  height: 100%;
+
+  /* --primary-color: #005B33; */
+  /* --primary-color: #95a273; */
+  --primary-color: #799f17;
+  --primary-color: #92A90D;
+  --primary-light-color: #C9F6CD;
+  --primary-light-color: #D5ED18;
+  --light-color: #f3f6f0;
+  --red: crimson;
+  --black: #111301;
+  --navbar-height: 6rem;
+  --shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  --border-radius: 6px;
+  --grey-background: #d9d9d9;
+  
+  --mb-s: 0.8rem,
+  --mb-m: 1.6rem,
+  --mb-b: 2.4rem,
+
+
+}
+
+body {
+  height: 100%;
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; */
+  overflow: hidden; /* Hide scrollbars 
+  /* overflow-y:scroll; */
+  /* color: blue; */
+
+  color: var(--black);
+}
+
+ul {
+  list-style: none;
+}
