@@ -9,10 +9,10 @@ export default function Notification({ games, className }) {
   const verificationHandler = (e) => {
     if (e.target.localName !== "button") return;
 
-    const btnText = e.target.innerText;
+    const btnPurpose = e.target.dataset.purpose;
 
-    if (btnText === "ACCEPT") gameVerification(e.target.dataset.id, true);
-    if (btnText === "DECLINE") removeGame(e.target.dataset.id);
+    if (btnPurpose === "ACCEPT") gameVerification(e.target.dataset.id, true);
+    if (btnPurpose === "DECLINE") removeGame(e.target.dataset.id);
   };
 
   return (
@@ -38,10 +38,18 @@ export default function Notification({ games, className }) {
               showType="notification"
             />
             <div className="buttons">
-              <button className="btn--accept" data-id={game.id}>
+              <button
+                className="btn--accept"
+                data-id={game.id}
+                data-purpose="ACCEPT"
+              >
                 ACCEPT
               </button>
-              <button className="btn--decline" data-id={game.id}>
+              <button
+                className="btn--decline"
+                data-id={game.id}
+                data-purpose="DECLINE"
+              >
                 DECLINE
               </button>
             </div>

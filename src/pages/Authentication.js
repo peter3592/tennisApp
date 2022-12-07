@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 import Modal from "../components/UI/Modal";
 
-export default function Authentification({ children }) {
+export default function Authentication({ children }) {
   const { modal, setModal } = useUIContext();
 
   useEffect(() => {

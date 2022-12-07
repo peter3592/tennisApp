@@ -6,7 +6,6 @@ import GameResult from "./GameResult";
 import { useMediaQuery } from "react-responsive";
 
 export default function Game({
-  key,
   gameDate,
   player1,
   player2,
@@ -19,7 +18,7 @@ export default function Game({
   const smallScreen = useMediaQuery({ query: "(max-width: 500px)" });
 
   return (
-    <Container key={key} smallScreen={smallScreen}>
+    <Container smallScreen={smallScreen}>
       <div className={`details ${smallScreen ? "details--mediaSmall" : ""}`}>
         <div className="details__subContainer">
           <div className={`detail ${verified ? "verified" : "unverified"}`}>

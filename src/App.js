@@ -2,10 +2,10 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { useAuthContext, useUIContext, useDataContext } from "./store/context";
 import Dashboard from "./pages/Dashboard";
 import PlayerProfile from "./components/Content/Players/PlayerProfile";
-import Authentification from "./pages/Authentification";
-import ForgotPassword from "./components/Authentification/ForgotPassword";
-import Login from "./components/Authentification/Login";
-import Signup from "./components/Authentification/Signup";
+import Authentication from "./pages/Authentication";
+import ForgotPassword from "./components/Authentication/ForgotPassword";
+import Login from "./components/Authentication/Login";
+import Signup from "./components/Authentication/Signup";
 import NewGameForm from "./components/Content/NewGame/NewGameForm";
 import LoadingSpinner from "./components/UI/LoadingSpinner";
 import Background from "./components/UI/Background";
@@ -31,25 +31,25 @@ function App() {
               <Route
                 path="/login"
                 element={
-                  <Authentification>
+                  <Authentication>
                     <Login />
-                  </Authentification>
+                  </Authentication>
                 }
               />
               <Route
                 path="/signup"
                 element={
-                  <Authentification>
+                  <Authentication>
                     <Signup />
-                  </Authentification>
+                  </Authentication>
                 }
               />
               <Route
                 path="/forgot-password"
                 element={
-                  <Authentification>
+                  <Authentication>
                     <ForgotPassword />
-                  </Authentification>
+                  </Authentication>
                 }
               />
               <Route

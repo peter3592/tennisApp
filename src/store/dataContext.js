@@ -21,7 +21,10 @@ export function DataProvider(props) {
 
     const playersNames = playersNamesSnapshot.val();
 
-    if (!playersNames) return setPlayersNames([]);
+    if (!playersNames) {
+      setPlayersNames([]);
+      return;
+    }
 
     const names = Object.entries(playersNames).map((item) => item[1]);
 
@@ -55,13 +58,7 @@ export function DataProvider(props) {
   };
 
   const fetchPlayers = async (dataSnapshot) => {
-    let usersDataSnapshot = null;
-
-    if (dataSnapshot) {
-      usersDataSnapshot = dataSnapshot;
-    } else {
-      usersDataSnapshot = await get(ref(db, "/users"));
-    }
+    const usersDataSnapshot = dataSnapshot ?? (await get(ref(db, "/users")));
 
     const users = usersDataSnapshot.val();
 

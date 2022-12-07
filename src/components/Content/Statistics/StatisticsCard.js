@@ -16,35 +16,32 @@ export default function StatisticsCard({
 }) {
   const { players } = useDataContext();
 
-  let displayValue;
-
-  if (!chart) displayValue = value;
-
-  if (chart)
-    displayValue = (
-      <svg width={150} height={150} className="chart">
-        <text x={76} y={80} textAnchor="middle">
-          {Math.trunc(value)}%
-        </text>
-        <VictoryPie
-          //   animate={{ duration: 400 }}
-          standalone={false}
-          padAngle={0}
-          labelComponent={<VictoryLabel capHeight={100} />}
-          innerRadius={37}
-          width={150}
-          height={150}
-          data={[
-            { key: "", y: value },
-            { key: "", y: 100 - value },
-          ]}
-          colorScale={[
-            getComputedStyle(document.body).getPropertyValue("--primary-color"),
-            "#ff3333",
-          ]}
-        />
-      </svg>
-    );
+  const displayValue = !chart ? (
+    value
+  ) : (
+    <svg width={150} height={150} className="chart">
+      <text x={76} y={80} textAnchor="middle">
+        {Math.trunc(value)}%
+      </text>
+      <VictoryPie
+        //   animate={{ duration: 400 }}
+        standalone={false}
+        padAngle={0}
+        labelComponent={<VictoryLabel capHeight={100} />}
+        innerRadius={37}
+        width={150}
+        height={150}
+        data={[
+          { key: "", y: value },
+          { key: "", y: 100 - value },
+        ]}
+        colorScale={[
+          getComputedStyle(document.body).getPropertyValue("--primary-color"),
+          "#ff3333",
+        ]}
+      />
+    </svg>
+  );
 
   return (
     <Div percentageCard={chart}>
@@ -66,29 +63,35 @@ export default function StatisticsCard({
       </div>
       <div className="middleLine"></div>
       <div className="bottom">
-        {list.length > 0 && (
+        {list.length > 0 ? (
           <StatisticsLine
             stars={3}
             player={list[0].player}
             count={list[0].count}
             percents={chart}
           />
+        ) : (
+          <StatisticsLine emptyLine />
         )}
-        {list.length > 1 && (
+        {list.length > 1 ? (
           <StatisticsLine
             stars={2}
             player={list[1].player}
             count={list[1].count}
             percents={chart}
           />
+        ) : (
+          <StatisticsLine emptyLine />
         )}
-        {list.length > 2 && (
+        {list.length > 2 ? (
           <StatisticsLine
             stars={1}
             player={list[2].player}
             count={list[2].count}
             percents={chart}
           />
+        ) : (
+          <StatisticsLine emptyLine />
         )}
       </div>
     </Div>

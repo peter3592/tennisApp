@@ -12,8 +12,11 @@ export default function StatisticsLine({
   player,
   count,
   percents = false,
+  emptyLine,
 }) {
   const { players } = useDataContext();
+
+  if (emptyLine) return <Div>&nbsp;</Div>;
 
   return (
     <Div>

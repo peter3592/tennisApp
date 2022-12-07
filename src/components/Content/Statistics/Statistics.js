@@ -161,11 +161,13 @@ const Wrapper = styled.div`
   height: 100%;
   padding: 0 1rem 3rem;
 
-  .statistics__items {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
+  .statistics {
+    &__items {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+    }
   }
 
   .pieChart {
@@ -180,23 +182,6 @@ const Wrapper = styled.div`
 
   .statistics__full {
     cursor: pointer;
-  }
-
-  .fullList {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-items: center;
-    column-gap: 4rem;
-    row-gap: 1rem;
-
-    &__row {
-      display: flex;
-      justify-content: space-between;
-    }
-
-    & p {
-      text-align: center;
-    }
   }
 
   @media (max-width: 1150px) {
