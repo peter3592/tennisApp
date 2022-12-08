@@ -19,7 +19,7 @@ export default function LastMatches(props) {
   const arrayLength = games.length;
 
   // Fill empty matches
-  for (let i = 0; i < 5 - arrayLength; i++) games.unshift(null);
+  for (let i = 0; i < 5 - arrayLength; i++) games.push(null);
 
   // Remove old matches
   if (arrayLength > 5) games = games.slice(0, 5);
@@ -47,7 +47,14 @@ export default function LastMatches(props) {
                 >
                   <Avatar
                     className=""
-                    style={{ width: avatarSize, height: avatarSize }}
+                    style={{
+                      width: avatarSize,
+                      height: avatarSize,
+                      filter:
+                        game.winner === game.player1.id
+                          ? "none"
+                          : "grayscale(1)",
+                    }}
                     {...players[game.player1.id].avatarConfig}
                     shape="circle"
                   />
@@ -70,7 +77,14 @@ export default function LastMatches(props) {
                 >
                   <Avatar
                     className=""
-                    style={{ width: avatarSize, height: avatarSize }}
+                    style={{
+                      width: avatarSize,
+                      height: avatarSize,
+                      filter:
+                        game.winner === game.player2.id
+                          ? "none"
+                          : "grayscale(1)",
+                    }}
                     {...players[game.player2.id].avatarConfig}
                     shape="circle"
                   />

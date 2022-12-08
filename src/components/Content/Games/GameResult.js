@@ -36,7 +36,11 @@ export default function GameResult({
       to={`players/${player1.id}`}
     >
       <Avatar
-        style={{ width: avatarSize, height: avatarSize }}
+        style={{
+          width: avatarSize,
+          height: avatarSize,
+          filter: winner === player1.id ? "none" : "grayscale(1)",
+        }}
         {...players[player1.id].avatarConfig}
         shape="circle"
       />
@@ -58,7 +62,11 @@ export default function GameResult({
       to={`players/${player2.id}`}
     >
       <Avatar
-        style={{ width: avatarSize, height: avatarSize }}
+        style={{
+          width: avatarSize,
+          height: avatarSize,
+          filter: winner === player2.id ? "none" : "grayscale(1)",
+        }}
         {...players[player2.id].avatarConfig}
         shape="circle"
       />
@@ -77,7 +85,7 @@ export default function GameResult({
       {(bigScreen ||
         (showType === "notification" &&
           (!smallNotificationScreen || result.length === 1))) && (
-        <Div showType={showType} bigScreen>
+        <Div showType={showType} avatarSize={avatarSize} bigScreen>
           {player1Container}
           <GameScore result={result} type={showType} />
           {player2Container}
@@ -109,6 +117,7 @@ const Div = styled.div`
   padding: 0 1.5rem;
 
   .player {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;

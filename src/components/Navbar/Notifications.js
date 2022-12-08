@@ -35,6 +35,7 @@ export default function Notification({ games, className }) {
               result={game.result}
               player1={game.player1}
               player2={game.player2}
+              winner={winner.id}
               showType="notification"
             />
             <div className="buttons">

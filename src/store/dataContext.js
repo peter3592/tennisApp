@@ -9,8 +9,8 @@ export const DataContext = React.createContext();
 export function DataProvider(props) {
   const [games, setGames] = useState(null);
   const [players, setPlayers] = useState(null);
-  const [dataLoaded, setDataLoaded] = useState(false);
   const [playersNames, setPlayersNames] = useState(null);
+  const [dataLoaded, setDataLoaded] = useState(false);
 
   useEffect(() => {
     fetchPlayersNames();
@@ -31,38 +31,37 @@ export function DataProvider(props) {
     setPlayersNames(names);
   };
 
-  const fetchGames = async (dataSnapshot) => {
-    let gamesDataSnapshot = null;
-
-    if (dataSnapshot) {
-      gamesDataSnapshot = dataSnapshot;
-    } else {
-      gamesDataSnapshot = await get(ref(db, "/games"));
-    }
+  const fetchGames = async () => {
+    const gamesDataSnapshot = await get(ref(db, "/games"));
 
     const games = gamesDataSnapshot.val();
 
-    if (games) {
-      const fetchedGames = Object.entries(games).map(([key, value]) => value);
-      // Filted declined games
-      const filteredGames = fetchedGames.filter(
-        (game) => !(game.verificationDone && !game.verified)
-      );
-      const sortedGames = filteredGames.sort(
-        (g1, g2) => g2.uploadedAt - g1.uploadedAt
-      );
-      return setGames(sortedGames);
+    if (!games) {
+      setGames([]);
+      return;
     }
 
-    setGames([]);
+    const fetchedGames = Object.entries(games).map(([key, value]) => value);
+    // Filted declined games
+    const filteredGames = fetchedGames.filter(
+      (game) => !(game.verificationDone && !game.verified)
+    );
+    const sortedGames = filteredGames.sort(
+      (g1, g2) => g2.uploadedAt - g1.uploadedAt
+    );
+
+    setGames(sortedGames);
   };
 
-  const fetchPlayers = async (dataSnapshot) => {
-    const usersDataSnapshot = dataSnapshot ?? (await get(ref(db, "/users")));
+  const fetchPlayers = async () => {
+    const usersDataSnapshot = await get(ref(db, "/users"));
 
     const users = usersDataSnapshot.val();
 
-    if (!users) return setPlayers([]);
+    if (!users) {
+      setPlayers([]);
+      return;
+    }
 
     setPlayers(users);
   };
